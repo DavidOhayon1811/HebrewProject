@@ -72,72 +72,11 @@
 				<q dir="rtl"> בתחילת העבודה, יש לציין, היה לנו קצת קשה. רצינו ליצור אתר יפה, שירשים את הגולשים, והבנו שבכדי לעשות זאת צריך להשקיע הרבה זמן. במבט לאחור, מאוד נהנינו בהכנת העבודה ומקווים שהיא תעזור לתלמידים בהמשך. </q>
 			</div>
 			<div id="content-2" class="content content--switch" dir="rtl">
-				<section class="container">
-					<!--questionBox-->
-					<div class="questionBox" id="app">
-						<!-- transition -->
-						<transition :duration="{ enter: 500, leave: 400 }" enter-active-class="animated zoomIn" leave-active-class="animated zoomOut" mode="out-in">
-							<!--qusetionContainer-->
-							<div class="questionContainer" v-if="questionIndex<quiz.questions.length" v-bind:key="questionIndex">
-								<header>
-									<h1 class="title is-6">בוחן קצר</h1>
-									<!--progress-->
-									<div class="progressContainer">
-										<progress class="progress is-info is-small" :value="(questionIndex/quiz.questions.length)*100" max="100">{{(questionIndex/quiz.questions.length)*100}}%</progress>
-										<p>{{(questionIndex/quiz.questions.length)*100}}% complete</p>
-									</div>
-									<!--/progress-->
-								</header>
-								<!-- questionTitle -->
-								<h2 class="titleContainer title">{{ quiz.questions[questionIndex].text }}</h2>
-								<!-- quizOptions -->
-								<div class="optionContainer">
-									<div class="option" v-for="(response, index) in quiz.questions[questionIndex].responses" @click="selectOption(index)" :class="{ 'is-selected': userResponses[questionIndex] == index}" :key="index">
-										{{ index | charIndex }}. {{ response.text }}
-									</div>
-								</div>
-								<!--quizFooter: navigation and progress-->
-								<footer class="questionFooter">
-									<!--pagination-->
-									<nav class="pagination" role="navigation" aria-label="pagination">
-										<!-- back button -->
-										<a class="button" v-on:click="prev();" :disabled="questionIndex < 1">חזור</a>
-										<!-- next button -->
-										<a class="button" :class="(userResponses[questionIndex]==null)?'':'is-active'" v-on:click="next();" :disabled="questionIndex>=quiz.questions.length">
-											{{ (userResponses[questionIndex]==null)?'אבור':'הבא' }}
-										</a>
-									</nav>
-									<!--/pagination-->
-								</footer>
-								<!--/quizFooter-->
-							</div>
-							<!--/questionContainer-->
-							<!--quizCompletedResult-->
-							<div v-if="questionIndex >= quiz.questions.length" v-bind:key="questionIndex" class="quizCompleted has-text-centered">
-								<!-- quizCompletedIcon: Achievement Icon -->
-								<span class="icon">
-								<i class="fa" :class="score()>2?'fa-check-circle-o is-active':'fa-times-circle'"></i>
-							  </span>
-								<!--resultTitleBlock-->
-								<h2 class="title">
-									You did {{ (score()>3?'an amazing':(score()<3?'a poor':'a good')) }} job!
-								</h2>
-								<p class="subtitle">
-									Total score: {{ score() }} / {{ quiz.questions.length }}
-								</p>
-									<br>
-									<a class="button" @click="restart()">restart <i class="fa fa-refresh"></i></a>
-								<!--/resultTitleBlock-->
-								<p class="content__text" id="afterQuizLinks"><a href="https://docs.google.com/forms/d/14TdHIniwbL2w1UsBwGGo13syqrXVyFjJ8RiC1x5uLuA/viewform?edit_requested=true" target="_blank">שאלון בעברית (קצר)</a>
-								<br>
-								<a href="https://docs.google.com/forms/d/e/1FAIpQLSfr2y9XwRCvJbztXb78T20BHwvBFFQ2_SOEIGLjdpVd64x_wA/viewform?vc=0&c=0&w=1" target="_blank">שאלון בעברית (ארוך)</a></p>
-							</div>
-							<!--/quizCompetedResult-->
-						</transition>
-					</div>
-					<!--/questionBox-->
-				</section>
-				<!--/container-->
+				<p class="content__text">
+					<a href="https://docs.google.com/forms/d/14TdHIniwbL2w1UsBwGGo13syqrXVyFjJ8RiC1x5uLuA/viewform?edit_requested=true" target="_blank">שאלון בעברית (קצר)</a>
+					<br>
+					<a href="https://docs.google.com/forms/d/e/1FAIpQLSfr2y9XwRCvJbztXb78T20BHwvBFFQ2_SOEIGLjdpVd64x_wA/viewform?vc=0&c=0&w=1" target="_blank">שאלון בעברית (ארוך)</a>
+				</p>
 			</div>
 			<div id="content-3" class="content content--switch">
 				<div class="wrapper active-page1">
